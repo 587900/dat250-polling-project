@@ -5,8 +5,12 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import no.hvl.dat250.gruppe1.pollingproject.Classes.Account;
 import no.hvl.dat250.gruppe1.pollingproject.Classes.Poll;
+import no.hvl.dat250.gruppe1.pollingproject.dao.AccountDAO;
+import no.hvl.dat250.gruppe1.pollingproject.dao.PollDAO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.List;
 
 @SpringBootApplication
 public class PollingprojectApplication {
@@ -48,9 +52,27 @@ public class PollingprojectApplication {
 
         a.getPolls().add(p);
 
-        em.persist(a);
-        em.persist(b);
-        em.persist(p);
+        AccountDAO ad = new AccountDAO(em);
+        ad.create(a);
+        ad.create(b);
+
+        PollDAO pd = new PollDAO(em);
+        pd.create(p);
+
+        List<Account> listA = ad.findAll();
+
+        List<Poll> listB = pd.findAll();
+
+        for (Account i: listA
+             ) {
+            System.out.println(i.getEmail());
+
+        }
+        for (Poll i: listB
+        ) {
+            System.out.println(i.getDescription());
+
+        }
 
     }
 
