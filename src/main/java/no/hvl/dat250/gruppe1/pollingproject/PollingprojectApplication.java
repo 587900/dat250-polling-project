@@ -14,7 +14,7 @@ import java.util.List;
 @SpringBootApplication
 public class PollingprojectApplication {
 
-    private static final String PERSISTENCE_UNIT_NAME = "jpa-pollingapp";
+    public static final String PERSISTENCE_UNIT_NAME = "jpa-pollingapp";
 
     public static void main(String[] args) {
         try (EntityManagerFactory factory = Persistence.createEntityManagerFactory(

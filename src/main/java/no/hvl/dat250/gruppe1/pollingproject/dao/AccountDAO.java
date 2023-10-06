@@ -1,19 +1,24 @@
 package no.hvl.dat250.gruppe1.pollingproject.dao;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import no.hvl.dat250.gruppe1.pollingproject.PollingprojectApplication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import no.hvl.dat250.gruppe1.pollingproject.model.Account;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 @Component
 public class AccountDAO implements InterfaceDAO {
 
+    @PersistenceContext
     private EntityManager entityManager;
 
-    public AccountDAO(EntityManager em){
-        entityManager = em;
-    }
+    public AccountDAO() {}
+    public AccountDAO(EntityManager em){entityManager = em;}
 
     @Override
     public Account findOneById(int id) {
