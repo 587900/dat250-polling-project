@@ -1,6 +1,5 @@
 package no.hvl.dat250.gruppe1.pollingproject.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
 public interface InterfaceDAO<T> {

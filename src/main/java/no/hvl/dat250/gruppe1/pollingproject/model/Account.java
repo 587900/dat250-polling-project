@@ -1,4 +1,4 @@
-package no.hvl.dat250.gruppe1.pollingproject.Classes;
+package no.hvl.dat250.gruppe1.pollingproject.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;

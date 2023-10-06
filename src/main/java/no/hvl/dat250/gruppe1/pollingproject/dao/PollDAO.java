@@ -1,13 +1,10 @@
 package no.hvl.dat250.gruppe1.pollingproject.dao;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.PersistenceUnit;
-import no.hvl.dat250.gruppe1.pollingproject.Classes.Account;
-import no.hvl.dat250.gruppe1.pollingproject.Classes.Poll;
+import no.hvl.dat250.gruppe1.pollingproject.model.Account;
+import no.hvl.dat250.gruppe1.pollingproject.model.Poll;
 import org.springframework.stereotype.Component;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Component

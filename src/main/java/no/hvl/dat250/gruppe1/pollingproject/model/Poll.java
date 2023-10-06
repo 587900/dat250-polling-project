@@ -1,12 +1,11 @@
-package no.hvl.dat250.gruppe1.pollingproject.Classes;
+package no.hvl.dat250.gruppe1.pollingproject.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
+
 @Entity
 @Getter
 @Setter

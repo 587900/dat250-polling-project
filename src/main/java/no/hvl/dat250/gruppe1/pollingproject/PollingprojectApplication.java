@@ -3,11 +3,10 @@ package no.hvl.dat250.gruppe1.pollingproject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import no.hvl.dat250.gruppe1.pollingproject.Classes.Account;
-import no.hvl.dat250.gruppe1.pollingproject.Classes.Poll;
+import no.hvl.dat250.gruppe1.pollingproject.model.Account;
+import no.hvl.dat250.gruppe1.pollingproject.model.Poll;
 import no.hvl.dat250.gruppe1.pollingproject.dao.AccountDAO;
 import no.hvl.dat250.gruppe1.pollingproject.dao.PollDAO;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;

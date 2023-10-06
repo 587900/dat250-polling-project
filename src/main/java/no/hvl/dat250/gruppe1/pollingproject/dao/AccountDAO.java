@@ -1,9 +1,8 @@
 package no.hvl.dat250.gruppe1.pollingproject.dao;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
-import no.hvl.dat250.gruppe1.pollingproject.Classes.Account;
+import no.hvl.dat250.gruppe1.pollingproject.model.Account;
 
 import java.util.List;
 
