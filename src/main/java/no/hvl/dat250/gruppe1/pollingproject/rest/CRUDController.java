@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 public abstract class CRUDController<T extends IHasID> {
 
     private static final String DOES_NOT_EXIST = "resource does not exist";
+    private static final String RESOURCE_DELETED = "resource was deleted successfully";
 
     private DAO<T> dao;
 
@@ -37,11 +38,11 @@ public abstract class CRUDController<T extends IHasID> {
     }
 
     @DeleteMapping("/{id}")
-    public T delete(@PathVariable int id) {
+    public String delete(@PathVariable int id) {
         T t = dao.findOneById(id);
         if (t == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, DOES_NOT_EXIST);
         dao.deleteById(id);
-        return t;
+        return RESOURCE_DELETED;
     }
 
 }
