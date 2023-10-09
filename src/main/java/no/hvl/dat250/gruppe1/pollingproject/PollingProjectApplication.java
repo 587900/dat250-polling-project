@@ -3,19 +3,17 @@ package no.hvl.dat250.gruppe1.pollingproject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import no.hvl.dat250.gruppe1.pollingproject.dao.VoteDAO;
+import no.hvl.dat250.gruppe1.pollingproject.dao.DAO;
 import no.hvl.dat250.gruppe1.pollingproject.model.Account;
 import no.hvl.dat250.gruppe1.pollingproject.model.Poll;
-import no.hvl.dat250.gruppe1.pollingproject.dao.AccountDAO;
-import no.hvl.dat250.gruppe1.pollingproject.dao.PollDAO;
 import no.hvl.dat250.gruppe1.pollingproject.model.Vote;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 @SpringBootApplication
-public class PollingprojectApplication {
+public class PollingProjectApplication {
 
     public static final String PERSISTENCE_UNIT_NAME = "jpa-pollingapp";
 
@@ -28,7 +26,6 @@ public class PollingprojectApplication {
         }
     }
     private static void createObjects(EntityManager em) {
-
         Account a = new Account();
         a.setEmail("Torje@sklbb.no");
         a.setUsername("Torje");
@@ -57,28 +54,23 @@ public class PollingprojectApplication {
         v.setPoll(p);
         v.setVoter(a);
 
-        AccountDAO ad = new AccountDAO(em);
+        DAO<Account> ad = new DAO<>(Account.class, em);
         ad.create(a);
         ad.create(b);
 
-        PollDAO pd = new PollDAO(em);
+        DAO<Poll> pd = new DAO<>(Poll.class, em);
         pd.create(p);
 
-        VoteDAO vd = new VoteDAO(em);
+        DAO<Vote> vd = new DAO<>(Vote.class, em);
+        vd.create(v);
 
-        List<Account> listA = ad.findAll();
-        List<Poll> listB = pd.findAll();
-        List<Vote> listC = vd.findAll();
+        Collection<Account> listA = ad.findAll();
+        Collection<Poll> listB = pd.findAll();
+        Collection<Vote> listC = vd.findAll();
 
-        for (Account i: listA) {
-            System.out.println(i.getEmail());
-        }
-        for (Poll i: listB) {
-            System.out.println(i.getDescription());
-        }
-        for (Vote i : listC) {
-            System.out.println(i.getVoteSelection());
-        }
+        for (Account i : listA) System.out.println(i.getEmail());
+        for (Poll i : listB) System.out.println(i.getDescription());
+        for (Vote i : listC) System.out.println(i.getVoteSelection());
 
     }
 

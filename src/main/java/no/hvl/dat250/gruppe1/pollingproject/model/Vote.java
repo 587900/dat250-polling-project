@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-public class Vote implements Serializable {
+public class Vote implements Serializable, IHasID {
 
     public enum VoteSelection { GREEN, RED }
 

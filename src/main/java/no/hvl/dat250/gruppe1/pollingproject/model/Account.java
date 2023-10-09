@@ -11,8 +11,7 @@ import java.util.Collection;
 @Entity
 @Getter
 @Setter
-public class Account implements Serializable {
-
+public class Account implements Serializable, IHasID {
     public enum Role { USER, ADMIN }
 
     @Id

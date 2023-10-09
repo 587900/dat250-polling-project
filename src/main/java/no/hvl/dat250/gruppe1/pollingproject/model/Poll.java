@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-public class Poll implements Serializable {
+public class Poll implements Serializable, IHasID {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
