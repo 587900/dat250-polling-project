@@ -13,18 +13,20 @@ import java.util.Collection;
 @Setter
 public class Account implements Serializable {
 
+    public enum Role { USER, ADMIN }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long accountid;
-
-    private boolean isAdmin;
+    private Long id;
 
     private String username;
     private String password;
     private String email;
-    private String role;
 
-    @OneToMany(mappedBy = "pollowner")
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @OneToMany(mappedBy = "pollOwner")
     private Collection<Poll> polls = new ArrayList<>();
 
 }

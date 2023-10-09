@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -13,20 +15,23 @@ public class Poll implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long pollId;
+    private Long id;
 
-    private int pollCode;
+    private int pollCode; // todo: UniqueConstraint
     private String title;
     private String description;
-    private int timeLimit;
-    private boolean status;
-    private int greenVotes;
-    private int redVotes;
 
-    @ManyToOne()
-    private Account pollowner;
+    @ManyToMany
+    private Collection<Account> whitelist;
+    private boolean privatePoll;
 
+    private Date startDate;
+    private Date endDate;
+    private boolean closed;
 
-
+    @ManyToOne
+    private Account pollOwner;
+    @OneToMany
+    private Collection<Vote> votes;
 
 }

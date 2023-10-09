@@ -2,7 +2,7 @@ package no.hvl.dat250.gruppe1.pollingproject.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import no.hvl.dat250.gruppe1.pollingproject.model.Poll;
+import no.hvl.dat250.gruppe1.pollingproject.model.Vote;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,23 +10,23 @@ import java.util.List;
 
 @Transactional
 @Component
-public class PollDAO implements InterfaceDAO {
+public class VoteDAO implements InterfaceDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public PollDAO(EntityManager em){
+    public VoteDAO(EntityManager em){
         entityManager = em;
     }
 
     @Override
-    public Poll findOneById(int id) {
-        return entityManager.find(Poll.class, id);
+    public Vote findOneById(int id) {
+        return entityManager.find(Vote.class, id);
     }
 
     @Override
-    public List<Poll> findAll() {
-        return entityManager.createQuery("from " + Poll.class.getName(), Poll.class)
+    public List<Vote> findAll() {
+        return entityManager.createQuery("from " + Vote.class.getName(), Vote.class)
                 .getResultList();
     }
 
@@ -47,7 +47,7 @@ public class PollDAO implements InterfaceDAO {
 
     @Override
     public void deleteById(int entityId) {
-        Poll p = findOneById(entityId);
+        Vote p = findOneById(entityId);
         if (p != null) {
             entityManager.remove(p);
         }
